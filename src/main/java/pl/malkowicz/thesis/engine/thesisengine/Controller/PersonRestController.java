@@ -36,4 +36,9 @@ public class PersonRestController {
     public PersonDto getPerson(@PathVariable("id") Long id){
         return personService.getPerson(id);
     }
+
+    @RequestMapping(value="/signin/{email}/{password}",method = RequestMethod.GET)
+    public PersonDto findByEmailAndPassword(@PathVariable("email") String email, @PathVariable("password") String password){
+        return personService.findByEmailAndPassword(email,password);
+    }
 }

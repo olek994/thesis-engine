@@ -9,4 +9,6 @@ import pl.malkowicz.thesis.engine.thesisengine.Domain.Person;
  */
 
 public interface PersonRepository extends JpaRepository<Person, Long>{
+
+    Person findByEmailAndPassword(String email, String password);
 }

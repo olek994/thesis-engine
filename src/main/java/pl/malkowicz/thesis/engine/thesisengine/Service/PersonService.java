@@ -11,8 +11,7 @@ import java.util.List;
 public interface PersonService  {
 
     List<PersonDto> getAllPersons();
-
     PersonDto createPerson(PersonDto personDto);
-
     PersonDto getPerson(Long id);
+    PersonDto findByEmailAndPassword(String email, String password);
 }

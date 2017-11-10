@@ -34,4 +34,9 @@ public class PersonServiceImpl implements PersonService {
     public PersonDto getPerson(Long id) {
         return personProvider.getPerson(id);
     }
+
+    @Override
+    public PersonDto findByEmailAndPassword(String email, String password) {
+        return personProvider.findByEmailAndPassword(email,password);
+    }
 }

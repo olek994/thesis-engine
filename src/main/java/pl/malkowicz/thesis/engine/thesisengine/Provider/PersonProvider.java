@@ -31,6 +31,10 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
         return convert(personRepository.getOne(id));
     }
 
+    public PersonDto findByEmailAndPassword(String email, String password){
+        return convert(personRepository.findByEmailAndPassword(email,password));
+    }
+
     @Override
     protected Person convertToEntity(PersonDto dto, Person entity) {
         if(entity == null){
@@ -38,6 +42,8 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
         }
         entity.setName(dto.getName());
         entity.setSubname(dto.getSubname());
+        entity.setEmail(dto.getEmail());
+        entity.setPassword(dto.getPassword());
 
         return entity;
     }

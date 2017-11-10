@@ -23,6 +23,12 @@ public class PersonDto extends BaseDto<Long> {
     @NotNull
     private String subname;
 
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String password;
+
     @Builder
     public PersonDto(Long id, String name, String subname){
         super(id);

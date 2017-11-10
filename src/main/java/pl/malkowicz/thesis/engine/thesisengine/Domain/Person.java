@@ -42,5 +42,9 @@ public class Person extends BaseEntity {
     @Column
     String subname;
 
+    @Column
+    String email;
 
+    @Column
+    String password;
 }
