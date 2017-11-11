@@ -18,10 +18,10 @@ import javax.validation.constraints.NotNull;
 public class MessageDto extends BaseDto<Long> {
 
     @NotNull
-    PersonDto sender;
+    UserDto sender;
 
     @NotNull
-    PersonDto reciver;
+    UserDto reciver;
 
     @NotNull
     Long sessionId;
@@ -29,7 +29,7 @@ public class MessageDto extends BaseDto<Long> {
     String content;
 
     @Builder
-    public MessageDto(Long id, PersonDto sender, PersonDto reciver, Long sessionId, String content){
+    public MessageDto(Long id, UserDto sender, UserDto reciver, Long sessionId, String content){
         super(id);
         this.sender = sender;
         this.reciver = reciver;

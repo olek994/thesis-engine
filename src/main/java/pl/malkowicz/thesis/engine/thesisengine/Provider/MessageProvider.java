@@ -6,7 +6,7 @@ import pl.malkowicz.thesis.engine.thesisengine.Domain.Message;
 import pl.malkowicz.thesis.engine.thesisengine.Dto.MessageDto;
 import pl.malkowicz.thesis.engine.thesisengine.Provider.Base.BaseCrudProvider;
 import pl.malkowicz.thesis.engine.thesisengine.Repository.MessageRepository;
-import pl.malkowicz.thesis.engine.thesisengine.Repository.PersonRepository;
+import pl.malkowicz.thesis.engine.thesisengine.Repository.UserRepository;
 
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class MessageProvider extends BaseCrudProvider<Message, MessageDto> {
     MessageRepository repo;
 
     @Autowired
-    PersonRepository personRepository;
+    UserRepository UserRepository;
 
 
 
@@ -63,8 +63,8 @@ public class MessageProvider extends BaseCrudProvider<Message, MessageDto> {
             entity = new Message();
         }
 
-        entity.setSender(personRepository.getOne(dto.getSender().getId()));
-        entity.setReciver(personRepository.getOne(dto.getReciver().getId()));
+        entity.setSender(UserRepository.getOne(dto.getSender().getId()));
+        entity.setReciver(UserRepository.getOne(dto.getReciver().getId()));
         entity.setSessionId(dto.getSessionId());
         entity.setContent(dto.getContent());
 

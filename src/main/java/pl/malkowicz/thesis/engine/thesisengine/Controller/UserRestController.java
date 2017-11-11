@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.malkowicz.thesis.engine.thesisengine.Dto.PersonDto;
-import pl.malkowicz.thesis.engine.thesisengine.Service.PersonService;
+import pl.malkowicz.thesis.engine.thesisengine.Dto.UserDto;
+import pl.malkowicz.thesis.engine.thesisengine.Service.UserService;
 
 import java.util.List;
 
@@ -16,29 +16,30 @@ import java.util.List;
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2017r.
  */
 @RestController
-@RequestMapping("/person")
-public class PersonRestController {
+@RequestMapping("/user")
+public class UserRestController {
 
     @Autowired
-    PersonService personService;
+    UserService UserService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public List<PersonDto> getAllPersons() {
-        return personService.getAllPersons();
+    public List<UserDto> getAllUsers() {
+        return UserService.getAllUsers();
     }
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public PersonDto createPerson(@RequestBody PersonDto personDto) {
-        return personService.createPerson(personDto);
+    public UserDto createUser(@RequestBody UserDto userDto) {
+        System.out.println(userDto);
+        return UserService.createUser(userDto);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public PersonDto getPerson(@PathVariable("id") Long id){
-        return personService.getPerson(id);
+    public UserDto getUser(@PathVariable("id") Long id){
+        return UserService.getUser(id);
     }
 
     @RequestMapping(value="/signin/{email}/{password}",method = RequestMethod.GET)
-    public PersonDto findByEmailAndPassword(@PathVariable("email") String email, @PathVariable("password") String password){
-        return personService.findByEmailAndPassword(email,password);
+    public UserDto findByEmailAndPassword(@PathVariable("email") String email, @PathVariable("password") String password){
+        return UserService.findByEmailAndPassword(email,password);
     }
 }

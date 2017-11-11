@@ -34,11 +34,11 @@ public class Message extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "senderId")
-    Person sender;
+    User sender;
 
     @ManyToOne
     @JoinColumn(name = "reciverId")
-    Person reciver;
+    User reciver;
 
     @Column
     Long sessionId;

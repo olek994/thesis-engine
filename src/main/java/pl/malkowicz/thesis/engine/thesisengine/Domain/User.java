@@ -22,17 +22,17 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "t_PERSON")
-@SequenceGenerator(name = "sPerson",
-                   sequenceName = "SEQ_PERSON",
+@Table(name = "t_User")
+@SequenceGenerator(name = "sUser",
+                   sequenceName = "SEQ_User",
                    allocationSize = 1,
                    initialValue = 100)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Person extends BaseEntity {
+public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-                    generator = "sPerson")
+                    generator = "sUser")
     @Id
     Long id;
 

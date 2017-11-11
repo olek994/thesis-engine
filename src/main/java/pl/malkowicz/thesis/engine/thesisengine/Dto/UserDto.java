@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class PersonDto extends BaseDto<Long> {
+public class UserDto extends BaseDto<Long> {
 
     @NotNull
     private String name;
@@ -30,7 +30,7 @@ public class PersonDto extends BaseDto<Long> {
     private String password;
 
     @Builder
-    public PersonDto(Long id, String name, String subname){
+    public UserDto(Long id, String name, String subname){
         super(id);
         this.name = name;
         this.subname = subname;
