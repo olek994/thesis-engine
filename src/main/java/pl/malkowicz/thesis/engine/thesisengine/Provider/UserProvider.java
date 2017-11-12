@@ -7,6 +7,7 @@ import pl.malkowicz.thesis.engine.thesisengine.Dto.UserDto;
 import pl.malkowicz.thesis.engine.thesisengine.Provider.Base.BaseCrudProvider;
 import pl.malkowicz.thesis.engine.thesisengine.Repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,22 +18,22 @@ import java.util.List;
 public class UserProvider extends BaseCrudProvider<User, UserDto> {
 
     @Autowired
-    UserRepository UserRepository;
+    UserRepository userRepository;
 
     public List<UserDto> getAllUsers(){
-        return convert(UserRepository.findAll());
+        return convert(userRepository.findAll());
     }
 
     public UserDto createUser(UserDto userDto){
-        return convert(UserRepository.save(convertToEntity(userDto,null)));
+        return convert(userRepository.save(convertToEntity(userDto,null)));
     }
 
     public UserDto getUser(Long id){
-        return convert(UserRepository.getOne(id));
+        return convert(userRepository.getOne(id));
     }
 
     public UserDto findByEmailAndPassword(String email, String password){
-        return convert(UserRepository.findByEmailAndPassword(email,password));
+        return convert(userRepository.findByEmailAndPassword(email,password));
     }
 
     @Override
@@ -44,6 +45,14 @@ public class UserProvider extends BaseCrudProvider<User, UserDto> {
         entity.setSubname(dto.getSubname());
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
+
+        if (dto.getRecipient() != null) {
+            List<User> userRecipient = new ArrayList<>();
+            for(UserDto userDto: dto.getRecipient()){
+                userRecipient.add(userRepository.getOne(userDto.getId()));
+            }
+            entity.setRecipient(userRecipient);
+        }
 
         return entity;
     }

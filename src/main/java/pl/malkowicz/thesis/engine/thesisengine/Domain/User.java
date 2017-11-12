@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 import pl.malkowicz.thesis.engine.thesisengine.Domain.Base.BaseEntity;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * Created by Aleksander on 02.11.2017.
@@ -47,4 +49,8 @@ public class User extends BaseEntity {
 
     @Column
     String password;
+
+    @Column
+    @ElementCollection
+    List<User> recipient;
 }

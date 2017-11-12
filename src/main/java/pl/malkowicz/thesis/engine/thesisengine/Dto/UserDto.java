@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import pl.malkowicz.thesis.engine.thesisengine.Dto.Base.BaseDto;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Aleksander on 02.11.2017.
@@ -28,6 +29,8 @@ public class UserDto extends BaseDto<Long> {
 
     @NotNull
     private String password;
+
+    private List<UserDto> recipient;
 
     @Builder
     public UserDto(Long id, String name, String subname){
