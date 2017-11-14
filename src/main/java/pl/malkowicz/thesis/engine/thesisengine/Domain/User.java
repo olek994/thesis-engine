@@ -7,14 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pl.malkowicz.thesis.engine.thesisengine.Domain.Base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -52,5 +45,5 @@ public class User extends BaseEntity {
 
     @Column
     @ElementCollection
-    List<User> recipient;
+    List<Long> recipientId;
 }

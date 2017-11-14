@@ -30,13 +30,14 @@ public class UserDto extends BaseDto<Long> {
     @NotNull
     private String password;
 
-    private List<UserDto> recipient;
+    private List<Long> recipientId;
 
     @Builder
-    public UserDto(Long id, String name, String subname){
+    public UserDto(Long id, String name, String subname, List<Long> recipientId){
         super(id);
         this.name = name;
         this.subname = subname;
+        this.recipientId = recipientId;
     }
 
 }

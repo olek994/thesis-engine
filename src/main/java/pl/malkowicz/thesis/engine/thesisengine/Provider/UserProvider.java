@@ -46,12 +46,8 @@ public class UserProvider extends BaseCrudProvider<User, UserDto> {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
 
-        if (dto.getRecipient() != null) {
-            List<User> userRecipient = new ArrayList<>();
-            for(UserDto userDto: dto.getRecipient()){
-                userRecipient.add(userRepository.getOne(userDto.getId()));
-            }
-            entity.setRecipient(userRecipient);
+        if (dto.getRecipientId() != null) {
+            entity.setRecipientId(dto.getRecipientId());
         }
 
         return entity;
