@@ -7,7 +7,6 @@ import pl.malkowicz.thesis.engine.thesisengine.Dto.UserDto;
 import pl.malkowicz.thesis.engine.thesisengine.Provider.Base.BaseCrudProvider;
 import pl.malkowicz.thesis.engine.thesisengine.Repository.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +33,10 @@ public class UserProvider extends BaseCrudProvider<User, UserDto> {
 
     public UserDto findByEmailAndPassword(String email, String password){
         return convert(userRepository.findByEmailAndPassword(email,password));
+    }
+
+    public UserDto findByEmail(String email){
+        return convert(userRepository.findByEmail(email));
     }
 
     @Override

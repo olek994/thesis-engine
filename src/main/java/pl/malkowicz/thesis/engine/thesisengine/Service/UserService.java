@@ -14,4 +14,5 @@ public interface UserService  {
     UserDto createUser(UserDto userDto);
     UserDto getUser(Long id);
     UserDto findByEmailAndPassword(String email, String password);
+    UserDto findByEmail(String email);
 }

@@ -18,25 +18,30 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserProvider UserProvider;
+    UserProvider userProvider;
 
     @Override
     public List<UserDto> getAllUsers() {
-        return UserProvider.getAllUsers();
+        return userProvider.getAllUsers();
     }
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        return UserProvider.createUser(userDto);
+        return userProvider.createUser(userDto);
     }
 
     @Override
     public UserDto getUser(Long id) {
-        return UserProvider.getUser(id);
+        return userProvider.getUser(id);
     }
 
     @Override
     public UserDto findByEmailAndPassword(String email, String password) {
-        return UserProvider.findByEmailAndPassword(email,password);
+        return userProvider.findByEmailAndPassword(email,password);
+    }
+
+    @Override
+    public UserDto findByEmail(String email) {
+        return userProvider.findByEmail(email);
     }
 }

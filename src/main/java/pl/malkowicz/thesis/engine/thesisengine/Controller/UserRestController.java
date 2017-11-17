@@ -20,26 +20,30 @@ import java.util.List;
 public class UserRestController {
 
     @Autowired
-    UserService UserService;
+    UserService userService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public List<UserDto> getAllUsers() {
-        return UserService.getAllUsers();
+        return userService.getAllUsers();
     }
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
     public UserDto createUser(@RequestBody UserDto userDto) {
-        System.out.println(userDto);
-        return UserService.createUser(userDto);
+        return userService.createUser(userDto);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public UserDto getUser(@PathVariable("id") Long id){
-        return UserService.getUser(id);
+        return userService.getUser(id);
     }
 
     @RequestMapping(value="/signin/{email}/{password}",method = RequestMethod.GET)
     public UserDto findByEmailAndPassword(@PathVariable("email") String email, @PathVariable("password") String password){
-        return UserService.findByEmailAndPassword(email,password);
+        return userService.findByEmailAndPassword(email,password);
+    }
+
+    @RequestMapping(value="/email/{email}",method = RequestMethod.GET)
+    public UserDto findByEmail(@PathVariable("email") String email){
+        return userService.findByEmail(email);
     }
 }
