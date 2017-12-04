@@ -18,6 +18,8 @@ import pl.malkowicz.thesis.engine.thesisengine.Repository.UserRepository;
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter{
 
+    public static final String RESOURCE_ID = "thesis-resource";
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -29,8 +31,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter{
     //Dodanie clientow (third-part app)
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("thesis-android").accessTokenValiditySeconds(1000)
-                .scopes("read", "write","trust").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
+        // TODO zmienic na pobranie z bazy
+        clients.inMemory().withClient("thesis-android").secret("thesis").accessTokenValiditySeconds(1000)
+                .scopes("read", "write","trust").authorizedGrantTypes("password", "refresh_token").resourceIds(RESOURCE_ID);
     }
 
 }
