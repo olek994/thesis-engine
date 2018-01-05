@@ -23,8 +23,7 @@ public interface MessageService {
     void deleteMessage(Long id);
 
 
-    List<MessageDto> getMessageBySessionId(Long sessionid);
+    List<MessageDto> getMessageByAuthorId(Long authorId);
 
-
-    List<MessageDto> getMessageBySenderId(Long senderId);
+    public List<MessageDto> findAllByConversationId(Long conversationId);
 }

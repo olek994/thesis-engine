@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import pl.malkowicz.thesis.engine.thesisengine.Dto.Base.BaseDto;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by Aleksander on 02.11.2017.
@@ -17,23 +18,20 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class MessageDto extends BaseDto<Long> {
 
-    @NotNull
-    UserDto sender;
+    Long authorId;
 
-    @NotNull
-    UserDto reciver;
+    Long conversationId;
 
-    @NotNull
-    Long sessionId;
+    Date sendDate;
 
     String content;
 
     @Builder
-    public MessageDto(Long id, UserDto sender, UserDto reciver, Long sessionId, String content){
+    public MessageDto(Long id, Long authorId,Long conversationId,Date sendDate, String content){
         super(id);
-        this.sender = sender;
-        this.reciver = reciver;
-        this.sessionId = sessionId;
+        this.authorId = authorId;
+        this.conversationId = conversationId;
+        this.sendDate = sendDate;
         this.content = content;
     }
 }

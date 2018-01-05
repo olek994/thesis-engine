@@ -41,12 +41,13 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<MessageDto> getMessageBySessionId(Long sessionid) {
-        return provider.getMessageBySessionId(sessionid);
+    public List<MessageDto> getMessageByAuthorId(Long authorId) {
+        return provider.findAllByAuthorId(authorId);
     }
 
     @Override
-    public List<MessageDto> getMessageBySenderId(Long senderId) {
-        return provider.getMessageBySenderId(senderId);
+    public List<MessageDto> findAllByConversationId(Long conversationId) {
+        return provider.findAllByConversationId(conversationId);
     }
+
 }

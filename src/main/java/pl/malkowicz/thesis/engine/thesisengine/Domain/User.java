@@ -45,5 +45,5 @@ public class User extends BaseEntity {
 
     @Column
     @ElementCollection
-    List<Long> recipientId;
+    List<Long> conversationsId;
 }

@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import pl.malkowicz.thesis.engine.thesisengine.Domain.Message;
 import pl.malkowicz.thesis.engine.thesisengine.Dto.MessageDto;
 import pl.malkowicz.thesis.engine.thesisengine.Service.MessageService;
 
@@ -42,13 +44,15 @@ public class MessageRestController {
             service.deleteMessage(id);
     }
 
-    @RequestMapping(value = "/{sessionId}",method = RequestMethod.GET)
-    public List<MessageDto> getMessageBySessionId(@PathVariable("sessionid")Long sessionid) {
-        return service.getMessageBySessionId(sessionid);
+    @RequestMapping(value = "/author/{authorId}", method = RequestMethod.GET)
+    public List<MessageDto> getMessageByAuthorId(@PathVariable("authorId") Long authorId){
+        return service.getMessageByAuthorId(authorId);
     }
 
-    @RequestMapping(value = "/{senderId}",method = RequestMethod.GET)
-    public List<MessageDto> getMessageBySenderId(@PathVariable("senderId")Long senderId) {
-        return service.getMessageBySenderId(senderId);
+
+    @RequestMapping(value = "/conversation/{conversationId}", method = RequestMethod.GET)
+    public List<MessageDto> getAllMessagesByConversationId(@PathVariable("conversationId") Long conversationId){
+        return service.findAllByConversationId(conversationId);
     }
+
 }

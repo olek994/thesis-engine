@@ -49,8 +49,8 @@ public class UserProvider extends BaseCrudProvider<User, UserDto> {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
 
-        if (dto.getRecipientId() != null) {
-            entity.setRecipientId(dto.getRecipientId());
+        if (dto.getConversationsId() != null) {
+            entity.setConversationsId(dto.getConversationsId());
         }
 
         return entity;

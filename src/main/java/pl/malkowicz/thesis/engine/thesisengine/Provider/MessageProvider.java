@@ -26,7 +26,6 @@ public class MessageProvider extends BaseCrudProvider<Message, MessageDto> {
     UserRepository UserRepository;
 
 
-
     public MessageDto createMessage(MessageDto messageDto) {
         return convert(repo.save(this.convertToEntity(messageDto,null)));
     }
@@ -46,26 +45,22 @@ public class MessageProvider extends BaseCrudProvider<Message, MessageDto> {
         repo.delete(id);
     }
 
-
-    public List<MessageDto> getMessageBySessionId(Long sessionid) {
-        return convert(repo.findAllBySessionId(sessionid));
+    public List<MessageDto> findAllByAuthorId(Long authorId){
+        return convert(repo.findAllByAuthorId(authorId));
     }
 
-
-    public List<MessageDto> getMessageBySenderId(Long senderId) {
-        return convert(repo.findAllBySenderId(senderId));
+    public List<MessageDto> findAllByConversationId(Long conversationId){
+        return convert(repo.findAllByConversationId(conversationId));
     }
-
 
     @Override
     protected Message convertToEntity(MessageDto dto, Message entity) {
         if (entity == null) {
             entity = new Message();
         }
-
-        entity.setSender(UserRepository.getOne(dto.getSender().getId()));
-        entity.setReciver(UserRepository.getOne(dto.getReciver().getId()));
-        entity.setSessionId(dto.getSessionId());
+        entity.setAuthorId(dto.getAuthorId());
+        entity.setConversationId(dto.getConversationId());
+        entity.setSendDate(dto.getSendDate());
         entity.setContent(dto.getContent());
 
         return entity;
